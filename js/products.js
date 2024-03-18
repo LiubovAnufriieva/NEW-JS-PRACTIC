@@ -52,7 +52,7 @@ function createMarkup(arr) {
     .map(
       product => `
     <li data-id=${product.id} class="item product-item">
-    <img src="${product.img}" alt="${product.name} width="300">
+    <img src="${product.img}" alt="${product.name}" width="300">
     <h2>${product.name}</h2>
     <p>Ціна: ${product.price} грн.</p>
     </li>
@@ -60,7 +60,6 @@ function createMarkup(arr) {
     )
     .join('');
 }
-
 function handlerClick(event) {
   if (event.target === event.currentTarget) {
     return;
@@ -69,13 +68,16 @@ function handlerClick(event) {
   const productId = currentProduct.dataset.id;
   const product = products.find(product => product.id === Number(productId));
 
-  const instance = basicLightbox.create(
-    `<div class="modal">
-        <img class="modal-img" src="${product.img} alt="${product.name}">
+  const instance = basicLightbox.create(`
+    <div class="modal">
+        <img class="modal-img" src="${product.img}" alt="${product.name}">
         <h2>${product.name}</h2>
         <h3>${product.price}</h3>
         <p>${product.description}</p>
-        </div>`
-  );
+    </div>
+    `);
   instance.show();
 }
+
+
+console.log(basicLightbox);
